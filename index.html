@@ -1,0 +1,247 @@
+<html>
+<head>
+        <title>Registration Form</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="default.css"/>
+    </head>
+    <script type="text/javascript">
+	 var CHECKBOX_1 = false;
+        var CHECKBOX_2 = false;
+        var CHECKBOX_3 = false;
+        var CHECKBOX_4 = false;
+        var CHECKBOX_5 = false;
+        var CHECKBOX_6 = false;
+
+        debugger;
+        var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+        db.transaction(function (tx) {
+            
+            tx.executeSql('CREATE TABLE IF NOT EXISTS RegisterDB (Firstname, Company,Lastname,Website,Email,Position,Password,Phone,Interest,Strategy,Design,Networking,Campaigns,Emailmarketing,Software,Solution)');
+           
+        });
+        
+  
+      // Form validation code will below.
+      function validate()
+      {
+      
+         if( document.myForm.fname.value == "" )
+         {
+            alert( "Please provide your first name!" );
+            document.myForm.fname.focus() ;
+            return false;
+         }
+		 if( document.myForm.company.value == "" )
+         {
+            alert( "Please provide your company name!" );
+            document.myForm.company.focus() ;
+            return false;
+         }
+		 if( document.myForm.lname.value == "" )
+         {
+            alert( "Please provide your last name!" );
+            document.myForm.lname.focus() ;
+            return false;
+         }
+         if( document.myForm.web.value == "" )
+         {
+            alert( "Please provide your website url!" );
+            document.myForm.web.focus() ;
+            return false;
+         }
+		 
+        
+		 var emailID = document.myForm.EMail.value;
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");
+         
+         if (atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            alert("Please enter correct email ID")
+            document.myForm.EMail.focus() ;
+            return false;
+         }	
+		 if (document.myForm.phoneno.value == "") {
+                alert("Please enter your 10 digit phohe number!");
+                document.myForm.phoneno.focus();
+                return false;
+            }	
+			alert ("Congratulation! Your data saved.")
+         return( true );
+		 
+      }
+	  function submit() {         
+            var check = validate();
+
+            if (check == true) {
+
+                if (document.myForm.CHECKBOX_1.checked == true) {
+
+                    CHECKBOX_1 = true;
+                }
+                if (document.myForm.CHECKBOX_2.checked == true) {
+
+                    CHECKBOX_2 = true;
+                }
+                if (document.myForm.CHECKBOX_3.checked == true) {
+
+                    CHECKBOX_3 = true;
+                }
+                if (document.myForm.CHECKBOX_4.checked == true) {
+
+                    CHECKBOX_4 = true;
+                }
+                if (document.myForm.CHECKBOX_5.checked == true) {
+
+                    CHECKBOX_5 = true;
+                }
+                if (document.myForm.CHECKBOX_6.checked == true) {
+
+                    CHECKBOX_6 = true;
+                }
+
+                db.transaction(function (tx) {               
+                                       
+                    tx.executeSql('INSERT INTO RegisterDB (Firstname,Company,Lastname,Website,Email,Position,Password,Phone,Interest,Strategy,Design,Networking,Campaigns,Emailmarketing,Software,Solution) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [document.myForm.fname.value, document.myForm.company.value, document.myForm.lname.value, document.myForm.web.value, document.myForm.EMail.value, document.myForm.position.value, document.myForm.password.value, document.myForm.phoneno.value, document.myForm.services.value, CHECKBOX_1, CHECKBOX_2, CHECKBOX_3, CHECKBOX_4, CHECKBOX_5, CHECKBOX_6
+					, document.myForm.solution.value]);
+                   });             
+
+            }
+        }
+
+   
+</script>
+    <body >  
+
+	<div>
+	
+
+        <form action="" name="myForm" class="register" >
+		<p><img src="adobe.gif" alt="adobe reader" style="width:50px;height:50px;" align="center" class="image">&nbsp &nbsp Please fill out this form below to begin downloading.</p>
+		<br/>
+			<br/>
+            <hr/>
+			<br/>
+			<br/>
+            <div class="row1">
+                
+                <p>
+                    <label>First Name: *
+                    </label>
+                    <input type="text" name="fname"/>
+                    <label>Company: *
+                    </label>
+                    <input type="text" name="company"/>
+					
+                </p>
+                <p>
+                    <label>Last Name*
+                    </label>
+                    <input type="text" name="lname"/>
+                    <label>Web Site: *
+                    </label>
+                    <input type="text" name="web"/>
+                </p>
+				<p>
+                    <label>Email: *
+                    </label>
+                    <input type="text" name="EMail"/>
+                    <label>Position: 
+                    </label>
+                    <select name="position" >
+                        <option value="">-- select one
+                        </option>
+                        <option value="manager"> Manager
+                        </option>
+                        <option value="developer"> Developer
+                        </option>
+                       
+					</select>
+                </p>
+				<p>
+                    <label>Password: 
+                    </label>
+                    <input type="password" name="password"/>
+                    <label>Phone: *
+                    </label>
+                    <input type="text" name="phoneno" maxlength="10"/>
+                </p>
+				<br/>
+				<br/>
+				<p>
+				* Setting a password will allow you to log back in and see our documents any time.
+            <br/>
+			<br/>
+			</div>
+<hr/>
+            <div>
+            <br/>
+			<br/>
+			<p><b> PRIMARY service  or product of Interest:* </b></p>
+				<select name="services" >
+					<option value="">-- select one
+                    </option>
+                    <option value="web design"> Web Design
+                    </option>
+                    <option value="video editing"> Video Editing
+                    </option>
+			</select>
+			<p><b> OTHER services or product of Interest: *</b></p>
+			<p class="agreement">
+                    <input type="checkbox" value="true" name="CHECKBOX_1"/>
+                    <label>Online Strategy</label>
+                </p>
+				<p class="agreement">
+                    <input type="checkbox" value="true" name="CHECKBOX_2"/>
+                    <label>Web Design and Development</label>
+                </p>
+				<p class="agreement">
+                    <input type="checkbox" value="true" name="CHECKBOX_3"/>
+                    <label>Social Networking and Online Community</label>
+                </p>
+				<p class="agreement">
+                    <input type="checkbox" value="true" name="CHECKBOX_4"/>
+                    <label>Integrated Online Compaigns</label>
+                </p>
+				<p class="agreement">
+                    <input type="checkbox" value="true" name="CHECKBOX_5"/>
+                    <label>Email Marketing Services (Strategy, Design, Development)</label>
+                </p>
+				<p class="agreement">
+                    <input type="checkbox" value="true" name="CHECKBOX_6"/>
+                    <label>Email Marketing Software</label>
+                </p>
+			<br/>
+			<br/>
+			</div>
+			<hr/>
+			<div>
+			<br/>
+			<br/>
+            <p><b> When are you looking to Implement a solution?* </b></p>
+				<select name="solution">
+					<option value="">-- select one
+                     </option>
+                     <option value="week"> Week
+                     </option>
+                     <option value="month"> Month
+                     </option>
+			</select>
+			<br/>
+			<br/>
+			</div>
+			<div>
+				<p><b> Yes! Subscribe to  </b></p>
+				<p class="agreement">
+                    <input type="checkbox" value="" checked/>
+                    <label>Receive feature and best practice articles on email marketing, Interactive design and online strategy.</label>
+                </p>
+			</div><br>
+        
+        </form>  
+        <br>
+          <input type="button" value="Save" id="button" onclick="submit();"/>
+	</div>
+    
+	</body>
+</html>

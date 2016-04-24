@@ -1,0 +1,103 @@
+body{
+	background-color: black;
+}
+
+#button
+{
+    background: Yellow; 
+    color: #000;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    font-size:18px;
+	width: 100px;
+	margin-left:250px;
+}
+
+form.register{
+    width:800px;
+    margin: 20px auto 0px auto;
+    height:800px;
+    color:gray;
+    padding:5px;
+   
+}
+form p{
+    font-size: 12pt;
+    clear:both;
+    margin: 0;
+    color:white;
+    padding:4px;
+}
+form.register fieldset.row1
+{
+    width:770px;
+    padding:5px;
+    float:left;
+    border-top:1px solid #F5F5F5;
+    margin-bottom:15px;
+}
+form.register fieldset.row1 label{
+    width:140px;
+    float: left;
+    text-align: right;
+    margin-right: 6px;
+    margin-top:2px;
+}
+form.register fieldset.row2
+{
+    border-top:1px solid #F1F1F1;
+    border-right:1px solid #F1F1F1;
+    height:220px;
+    padding:5px;
+    float:left;
+}
+
+form.register label{
+    color:#444;
+    width:98px;
+	color:white;
+    float: left;
+    text-align: left;
+    margin-right: 5px;
+    margin-top:2px;
+}
+
+
+form.register input{
+    width: 140px;
+    color: #505050;
+    float: left;
+    margin-right: 5px;
+}
+form.register input[type=checkbox] {
+    width:14px;
+    margin-top:4px;
+}
+form.register select
+{
+    border: 1px solid #E1E1E1;
+    width: 140px;
+   
+    margin-bottom:3px;
+    color: #505050;
+    margin-right:5px;
+}
+p.info{
+    font-size:7pt;
+    color: gray;
+}
+p.agreement{
+    margin-left:15px;
+}
+p.agreement label{
+    width:390px;
+    text-align:left;
+    margin-top:3px;
+}
+blurry-text {
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+textshadow .blurry-text {
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
